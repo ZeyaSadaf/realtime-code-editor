@@ -1,0 +1,42 @@
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const http = require('http');
+const {Server} = require('socket.io');
+
+
+
+// const corsOptions = {
+//     origin: 'http://localhost:3000',
+//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+//   }
+//   app.use(cors(corsOptions));
+// app.use(cors());
+app.use(cors({ origin: '*' }));
+app.use(function(req, res, next) {
+    // Set the Access-Control-Allow-Origin header to allow requests from any domain
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Set the Access-Control-Allow-Methods header to allow GET and POST requests
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    // Set the Access-Control-Allow-Headers header to allow the Content-Type header
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    // Call the next middleware in the chain
+    next();
+  });
+
+
+const server = http.createServer(app);
+
+const io = new Server(server);
+
+io.on("connection", (socket) =>
+{
+    console.log(`Socket ID----> : ${socket.id}`);
+});
+
+
+
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () =>
+console.log(`App listening on Port ${PORT}`)
+);
