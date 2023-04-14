@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef} from 'react'
+import React, { useEffect, useRef} from 'react'
 // import { Controlled as CodeMirror } from "react-codemirror2";
 import Codemirror from 'codemirror';
 import "codemirror/lib/codemirror.css";
@@ -12,7 +12,7 @@ import ACTIONS from '../Actions';
 
 const Editor = ({socketRef, roomId, onCodeChange }) => {
   const editorRef = useRef(null);
-  const [code, setCode] = useState("const a = 10;");
+  // const [code, setCode] = useState("const a = 10;");
 
   useEffect(() =>{
     async function init()
