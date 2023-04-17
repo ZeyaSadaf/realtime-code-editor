@@ -6,6 +6,6 @@
   publish = "public"
 [build.environment]
   NODE_ENV = "production"
-  PORT = "3000"
+  PORT = "3001"
   CI = "false"
   PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
