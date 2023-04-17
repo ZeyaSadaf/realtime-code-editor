@@ -14,6 +14,21 @@ const Editor = ({socketRef, roomId, onCodeChange }) => {
   const editorRef = useRef(null);
   // const [code, setCode] = useState("const a = 10;");
 
+  // const memoizedOnCodeChange = useCallback(
+  //   (code) =>
+  //   {
+  //     onCodeChange(code);
+  //     if(socketRef.current)
+  //     {
+  //       socketRef.current.emit(ACTIONS.CODE_CHANGE, {
+  //         roomId,
+  //         code
+  //       });
+  //     }
+  //   }, [onCodeChange, roomId, socketRef],
+  // );
+
+  
   useEffect(() =>{
     async function init()
     {
@@ -23,7 +38,7 @@ const Editor = ({socketRef, roomId, onCodeChange }) => {
         autoCloseTags:true,
         autoCloseBrackets : true,
         lineNumbers:true,
-      });
+      },);
 
 
 
@@ -44,13 +59,13 @@ const Editor = ({socketRef, roomId, onCodeChange }) => {
             })
         }
         console.log(code);
-      });
+      }, );
 
       
       // editorRef.current.setValue(`S`);   
     }
     init();
-  }, []);
+  }, [roomId, socketRef]);
 
   useEffect(() =>
   {
