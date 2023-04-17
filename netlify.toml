@@ -2,7 +2,7 @@
   command = "npm run build"
   publish = "build"
 [dev]
-  command = "npm run server:dev"
+  command = "npm run server:prod"
   publish = "public"
 [build.environment]
   NODE_ENV = "production"
